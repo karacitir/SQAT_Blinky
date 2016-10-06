@@ -44,7 +44,7 @@ all: Blinky.axf
 Blinky.axf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU C++ Linker'
-	arm-none-eabi-c++ -nostdlib -L"/Users/odieste/Desktop/Dropbox/Shared/Natalia and others -- FIDIPRO/Experiments/TDD/Training materials/OY Fall 2016 (Testable design)/workspace/lpc_chip_8xx/Debug" -L"/Users/odieste/Desktop/Dropbox/Shared/Natalia and others -- FIDIPRO/Experiments/TDD/Training materials/OY Fall 2016 (Testable design)/workspace/CMSIS_DSPLIB_CM0/lib" -Xlinker -Map="Blinky.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m0 -mthumb -T "Blinky_Debug.ld" -o "Blinky.axf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-c++ -nostdlib -Xlinker -Map="Blinky.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m0 -mthumb -T "Blinky_Debug.ld" -o "Blinky.axf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build
